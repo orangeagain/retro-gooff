@@ -160,7 +160,7 @@ def build_image(apps, device_type, img_format="esp32"):
     print("Generating partition table...")
     with open("partitions.csv", "w") as f:
         f.write("\n".join(table_csv))
-    run(["gen_esp32part.py", "partitions.csv", "partitions.bin"])
+    run(["python","F:\\Espressif\\frameworks\\esp-idf-v5.1.4\\components\\partition_table\\gen_esp32part.py", "partitions.csv", "partitions.bin"])
     with open("partitions.bin", "rb") as f:
         table_bin = f.read()
 
@@ -216,7 +216,7 @@ def flash_app(app, port, baudrate=1152000):
     if not os.path.exists("partitions.bin"):
         print("Reading device's partition table...")
         run(["esptool.py", "read_flash", "0x8000", "0x1000", "partitions.bin"], check=False)
-        run(["gen_esp32part.py", "partitions.bin"], check=False)
+        run(["python","F:\\Espressif\\frameworks\\esp-idf-v5.1.4\\components\\partition_table\\gen_esp32part.py", "partitions.bin"], check=False)
     app_bin = os.path.join(app, "build", app + ".bin")
     print(f"Flashing '{app_bin}' to port {port}")
     run(["parttool.py", "--partition-table-file", "partitions.bin", "write_partition", "--partition-name", app, "--input", app_bin])
