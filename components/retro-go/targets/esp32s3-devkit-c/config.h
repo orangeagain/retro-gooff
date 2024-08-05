@@ -42,6 +42,7 @@
     {RG_KEY_OPTION, GPIO_NUM_8,  GPIO_PULLUP_ONLY, 0},\
     {RG_KEY_A,      GPIO_NUM_15, GPIO_PULLUP_ONLY, 0},\
     {RG_KEY_B,      GPIO_NUM_5,  GPIO_PULLUP_ONLY, 0},\
+    {RG_KEY_X,      GPIO_NUM_0,  GPIO_PULLUP_ONLY, 0},\
 }
 
 // Battery
